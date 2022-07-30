@@ -1,0 +1,22 @@
+version: '3'
+services:
+    backend:
+        build: ./backend
+        container_name: python
+        ports:
+            - "8080:8080"
+        stdin_open: true
+        tty: true
+        volumes:
+            - ./backend/scripts:/scripts
+        working_dir: /scripts
+        environment:
+            LANG: ${LANG}
+            LANGUAGE: ${LANGUAGE}
+            LC_ALL: ${LC_ALL}
+            TZ: ${TZ}
+            TERM: ${TERM}
+        networks:
+            - python-node
+networks:
+    python-node:
